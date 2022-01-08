@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Character counter</title>
+  </head>
+  <body>
+    <h1>Character Counter</h1>
+    <p>
+      The count will update itself as the number of characters in the textbox
+      increases or decreases.
+    </p>
+
+    <textarea
+      placeholder="Start Typing"
+      onkeyup="charCounter(this.value)"
+    ></textarea>
+
+    <h4>Total characters: <span id="CharCountUp">0</span></h4>
+    <h4>Characters left: <span id="CharCountDown">500</span></h4>
+
+    <script>
+      function charCounter(str) {
+        document.querySelector("#CharCountUp").innerHTML = str.length;
+        document.querySelector("#CharCountDown").innerHTML = 500 - str.length;
+
+        if (str.length === 0) {
+          document.querySelector("body").style.backgroundColor = "#ffb1b1";
+        }
+        if (500 - str.length < 0) {
+          document.querySelector("body").style.backgroundColor = "#eb4034";
+          document.querySelector("#CharCountDown").innerHTML = "0";
+          document.querySelector("#CharCountDown").style.color = "#fff";
+        } else if (str.length > 0) {
+          document.querySelector("body").style.backgroundColor = "#3acf3c";
+          document.querySelector("#CharCountDown").style.color = "black";
+        }
+      }
+    </script>
+  </body>
+</html>
